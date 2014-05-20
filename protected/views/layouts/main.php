@@ -9,6 +9,26 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
+<div class="modal fade" id="registrationForm" tabindex="-1" >
+    <?php $this->widget('SiteRegistration'); ?>
+</div>
+<div class="modal fade" id="enterForm" tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Вход</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Войти</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="wrapper">
     <header>
         <div class="container">
@@ -18,10 +38,16 @@
             <div id="header-menu" class="span7 offset2">
                 <?php $this->widget('zii.widgets.CMenu',array(
                     'items'=>array(
-                        array('label'=>'Home', 'url'=>array('/site/index')),
-                        array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                        array('label'=>'Contact', 'url'=>array('/site/contact')),
-                        array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                        array('label'=>'Упражнения', 'url'=>array('/site/index')),
+                        array('label'=>'Питание', 'url'=>array('/site/page', 'view'=>'about')),
+                        array('label'=>'Вход', 'linkOptions'=>array(
+                            'data-toggle' => 'modal',
+                            'class' => 'test'
+                        ), 'url'=>'#enterForm', 'visible'=>Yii::app()->user->isGuest),
+                        array('label'=>'Регистрация', 'linkOptions'=>array(
+                            'data-toggle' => 'modal',
+                            'class' => 'test'
+                        ), 'url'=>'#registrationForm', 'visible'=>Yii::app()->user->isGuest),
                         array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
                     ),
                 )); ?>
