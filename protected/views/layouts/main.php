@@ -9,7 +9,7 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
-<div class="modal fade" id="registrationForm" tabindex="-1" >
+<div class="modal fade" id="registrationFormModal" tabindex="-1" >
     <?php $this->widget('SiteRegistration'); ?>
 </div>
 <div class="modal fade" id="enterForm" tabindex="-1" >
@@ -47,7 +47,7 @@
                         array('label'=>'Регистрация', 'linkOptions'=>array(
                             'data-toggle' => 'modal',
                             'class' => 'test'
-                        ), 'url'=>'#registrationForm', 'visible'=>Yii::app()->user->isGuest),
+                        ), 'url'=>'#registrationFormModal', 'visible'=>Yii::app()->user->isGuest),
                         array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
                     ),
                 )); ?>
@@ -86,5 +86,7 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="/bower_components/jquery.validation/dist/jquery.validate.js"></script>
+<script type="text/javascript" src="/bower_components/jquery.validation/dist/additional-methods.js"></script>
 </body>
 </html>

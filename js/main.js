@@ -3,9 +3,14 @@ jQuery(document).ready( function(){
         interval: 5000,
         spead: 5000
     });
-    $('#registrationForm').modal;
+    $('#registrationFormModal').modal;
     $('#enterFrom').modal;
-    $('#registrationFromSend').on("click", function(e){
-
+    $('#registrationForm').validate({
+        rules: {
+            password: "required",
+            password_again: {
+                equalTo: "#password"
+            }
+        }
     });
 });
